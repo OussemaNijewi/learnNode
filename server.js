@@ -4,8 +4,8 @@ const http = require('http');
 // runs every time a request has been made to the server
 
 const server = http.createServer((req, res) => {
-    res.setHeader('Content-Type', 'text/plain');
-    res.write('Hello, Oussema');
+    res.setHeader('Content-Type', 'text/html');
+    res.write('<h1>Hello, Oussema</h1>');
     res.end();
 
 });
