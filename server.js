@@ -4,7 +4,10 @@ const http = require('http');
 // runs every time a request has been made to the server
 
 const server = http.createServer((req, res) => {
-    console.log('request made');
+    res.setHeader('Content-Type', 'text/plain');
+    res.write('Hello, Oussema');
+    res.end();
+
 });
 
 server.listen(3000, 'localhost', () => {
