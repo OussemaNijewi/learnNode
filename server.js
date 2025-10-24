@@ -1,13 +1,23 @@
 const http = require('http');
+const fs = require('fs');
 
 // the callback function inside createServer() 
 // runs every time a request has been made to the server
 
 const server = http.createServer((req, res) => {
-    res.setHeader('Content-Type', 'text/html');
-    res.write('<h1>Hello, Oussema</h1>');
-    res.end();
 
+    //set response packet header content type
+    res.setHeader('Content-Type', 'text/html');
+
+    //send html file
+    fs.readFile('./views/index.html', (err, data) => {
+        if (err) {
+            console.log(err);
+            res.end();
+        } else {
+            res.end(data);
+        }
+    });
 });
 
 server.listen(3000, 'localhost', () => {
