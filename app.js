@@ -23,13 +23,18 @@ app.use(morgan('dev'));
 
 // respond to get request
 app.get('/', (req, res) => {
-    const blogs = [
-    {title: 'Yoshi finds eggs', snippet: 'Lorem ipsum dolor sit amet consectetur'},
-    {title: 'Mario finds stars', snippet: 'Lorem ipsum dolor sit amet consectetur'},
-    {title: 'How to defeat bowser', snippet: 'Lorem ipsum dolor sit amet consectetur'},
-    ];
-    //res.send('<p>home page</p>');
-    res.render('index', {title: 'Home', blogs});
+    res.redirect('/blogs');
+});
+
+//blog routes
+app.get('/blogs', (req, res) => {
+    Blog.find()
+        .then((result) => {
+            res.render('index', {title: 'All Blogs', blogs: result});
+        })
+        .catch((err) => {
+            console.log(err);
+        });
 });
 
 app.get('/about', (req, res) => {
