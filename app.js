@@ -21,4 +21,7 @@ app.get('/about-us', (req, res) => {
     res.redirect('/about');
 });
 
-//404 page
+//404 page should be at end of the code
+app.use((req, res) => {
+    res.status(404).sendFile('./views/404.html', {root: __dirname});
+});
