@@ -1,18 +1,20 @@
 const express = require('express');
 const morgan = require('morgan');
+const mongoose = require('mongoose');
 
 
 //express app
 const app = express();
 
 //connect to mongodb
-const dbURI = 'mongodb+srv://OussemaNijewi:Wess1234@nodetutorial.9hs1i0t.mongodb.net/?appName=NodeTutorial';
-
+const dbURI = 'mongodb+srv://OussemaNijewi:Wess1234@nodetutorial.9hs1i0t.mongodb.net/node-tuts?appName=NodeTutorial';
+mongoose.connect(dbURI)
+    .then((result) => app.listen(3000)) //listen for requests only after db connection complete
+    .catch((err) => console.log(err));
 //register view engine
 app.set('view engine', 'ejs');
 
-// listen for requests on locolhost port 3000
-app.listen(3000);
+
 
 // middleware and static files
 app.use(express.static('public'));
