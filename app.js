@@ -18,7 +18,7 @@ app.get('/about', (req, res) => {
 
 //redirect
 app.get('/about-us', (req, res) => {
-    app.redirect('/about');
+    res.redirect('/about');
 });
 
 //404 page
