@@ -10,6 +10,8 @@ app.set('view engine', 'ejs');
 // listen for requests on locolhost port 3000
 app.listen(3000);
 
+// middleware and static files
+app.use(express.static('public'));
 app.use(morgan('dev'));
 
 // respond to get request
