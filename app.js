@@ -1,4 +1,5 @@
 const express = require('express');
+const morgan = require('morgan');
 
 //express app
 const app = express();
@@ -8,6 +9,8 @@ app.set('view engine', 'ejs');
 
 // listen for requests on locolhost port 3000
 app.listen(3000);
+
+app.use(morgan('dev'));
 
 // respond to get request
 app.get('/', (req, res) => {
