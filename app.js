@@ -32,7 +32,7 @@ app.get('/about', (req, res) => {
     res.render('about',{title: 'About'});
 });
 
-app.use(blogRoutes);
+app.use('/blogs',blogRoutes);
 
 //404 page should be at end of the code
 app.use((req, res) => {

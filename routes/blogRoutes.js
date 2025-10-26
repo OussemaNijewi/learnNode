@@ -3,11 +3,11 @@ const Blog = require('../models/blog');
 
 const router = express.Router();
 
-router.get('/blogs/create', (req, res) => {
+router.get('/create', (req, res) => {
     res.render('create', {title: 'Create'});
 });
 
-router.get('/blogs', (req, res) => {
+router.get('/', (req, res) => {
     Blog.find().sort({ createdAt: -1 })
     .then(result => {
       res.render('index', { blogs: result, title: 'All blogs' });
@@ -17,7 +17,7 @@ router.get('/blogs', (req, res) => {
     });
 });
 
-router.post('/blogs', (req, res) => {
+router.post('/', (req, res) => {
     const blog = new Blog(req.body);
 
     blog.save()
@@ -29,7 +29,7 @@ router.post('/blogs', (req, res) => {
         });
 });
 
-router.get('/blogs/:id', (req, res) => {
+router.get('/:id', (req, res) => {
     const id = req.params.id;
     console.log(id);
     Blog.findById(id)
@@ -41,7 +41,7 @@ router.get('/blogs/:id', (req, res) => {
     });
 });
 
-router.delete('/blogs/:id', (req, res) => {
+router.delete('/:id', (req, res) => {
     const id = req.params.id;
 
     Blog.findByIdAndDelete(id)
